@@ -1,0 +1,331 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<section class="bg-half page-next-level"> 
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="text-center text-white">
+                        <h4 class="text-uppercase title mb-4">Register As Tutor</h4>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end home -->
+
+    <!-- CREATE RESUME START -->
+    <section class="section">
+        <div class="container">
+                  <form method="post" action="" enctype='multipart/form-data'>
+                    {% csrf_token %}
+        
+            <div class="row">
+                <div class="col-lg-12">
+                    <h5 class="text-dark">General Information :</h5>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                         {% if tutor.get_image_url %}
+                        <img src="{{ object.profile_image.url }}" class="img-fluid avatar avatar-medium d-block mx-auto rounded-pill" alt="">
+                        {% endif %}
+
+                         <div class="col-lg-6">
+                                    <div class="form-group app-label">
+                                        {{ form.profile_image|as_crispy_field }}
+                                    </div>
+                        </div>
+                      
+                            <div class="row mt-4">
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">First Name<span class="text-danger">*</span> :</label>
+                                        {{ form.first_name|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Middle Name<span class="text-danger">*</span> :</label>
+                                       {{ form.middle_name|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Last Name<span class="text-danger">*</span> :</label>
+                                         {{ form.last_name|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        {{ form.age|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <div class="form-button">
+                                            {{ form.sex|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <div class="form-button">
+                                            {{ form.marital_status|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h5 class="text-dark">Contact Information :</h5>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <div class="form-button">
+                                           {{ form.city|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Phone</label>
+                                         {{ form.phone|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">E-mail</label>
+                                        {{ form.email|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                 <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Website</label>
+                                        {{ form.website|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="form-group app-label">
+                                        <label>Address :</label>
+                                        {{ form.address|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h5 class="text-dark mt-5">Education Details :</h5>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">School</label>
+                                        {{ form.school|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Year Completed</label>
+                                        {{ form.year_completed|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Degree/Certificate</label>
+                                         {{ form.qualification|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group app-label">
+                                        {{ form.certificate|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group app-label">
+                                        <label>Additional Information :</label>
+                                       {{ form.education_additional_information|as_crispy_field }}
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <h5 class="text-dark">Work Experience :</h5>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Company Name</label>
+                                       {{ form.company|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Job Position</label>
+                                        {{ form.job_position|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                    <div class="col-md-6">
+                                            <div class="form-group app-label">
+                                               {{ form.work_experience|as_crispy_field }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group app-label">
+                                                <label class="text-muted">Location</label>
+                                               {{ form.location|as_crispy_field }}
+                                            </div>
+                                        </div>
+
+                                     <div class="col-md-6">
+                                            <div class="form-group app-label">
+                                               {{ form.salary|as_crispy_field }}
+                                            </div>
+                                        </div>
+
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group app-label">
+                                                <label class="text-muted">Date From</label>
+                                                {{ form.start_date|as_crispy_field }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group app-label">
+                                                <label class="text-muted">Date To</label>
+                                               {{ form.end_date|as_crispy_field }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group app-label">
+                                        {{ form.resume|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="form-group app-label">
+                                        <label>Additional Information :</label>
+                                        {{ form.work_additional_information|as_crispy_field }}
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <h5 class="text-dark mt-5">Refrees</h5>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Refree 1 Name</label>
+                                         {{ form.refree_1|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Contact</label>
+                                         {{ form.refree_1_phone|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Refree 2 Name</label>
+                                        {{ form.refree_2|as_crispy_field }}
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Contact</label>
+                                        {{ form.refree_2_phone|as_crispy_field }}
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <h5 class="text-dark">Subject(s) you would like to teach :</h5>
+                </div>
+                
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group app-label">
+                                        {{ form.subjects|as_crispy_field }}
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 mt-4">
+                    <button type="submit" class="btn btn-primary active-border rounded-btn btn-lg-wide mr-2 mr-md-4 alt">Save changes</button>
+                </div>
+            </div>
+                </form>
+        </div>
+    </section>
+    <!-- CREATE RESUME END -->
+
+
+<!-- <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+ {{ form|crispy }}
+<input type='submit' class='btn btn-default' value='Update' />
+</form>
+ -->
+  

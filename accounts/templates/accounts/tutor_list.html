@@ -1,0 +1,9 @@
+{% extends 'components/base.html' %}
+{% block head_title %}{{ title }} | {{ block.super }}{% endblock %}
+
+
+
+  {% block content %}
+  	 {% include 'components/tutors_content.html' %}
+  	 
+  {% endblock %}

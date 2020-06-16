@@ -1,0 +1,103 @@
+{% extends 'components/base.html' %}
+{% block head_title %}{{ title }} | {{ block.super }}{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<script>
+$(document).ready(function(){
+{% block jquery %}
+
+   $.ajax({
+    url: '/api/user/top-rated-tutor/',
+    method: "GET",
+    success: function(data){
+     var tutors = data
+     console.log('all tutors')
+     // First sort ASC
+     var ascending = _.sortBy(tutors, 'view_count');
+     // Then get DESC
+     var descending = ascending.reverse();
+
+     for(var i=0;i<descending.length;i++){
+     // var artist = descending[i];
+     var tutorTemplate = _.template($("#tutorlisttemplate").html());
+     var tutorHtml = tutorTemplate({tutors : descending});
+     $(".tutors").html(tutorHtml);
+
+    }
+    },
+    error: function(data){
+      console.log("error")
+      console.log(data)
+    }
+    })
+
+
+     {% endblock jquery %}
+
+</script>
+
+
+  {% block content %}
+
+ <!-- Top rated tutors templates -->
+<script type="text/template" id="tutorlisttemplate">
+<% _.each(tutors, function(tutor) { %>
+
+                                    <div class="job-box bg-white overflow-hidden border rounded mt-4 position-relative overflow-hidden">
+                                        <div class="lable text-center pt-2 pb-2">
+                                            <ul class="list-unstyled best text-white mb-0 text-uppercase">
+                                                <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="p-4">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-2">
+                                                    <div class="mo-mb-2">
+                                                        <img src="<%= tutor.profile_image %>" alt="" class="d-block rounded" height="160">
+
+                                                       
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div>
+                                                        <h5 class="f-18"><a href="<%= tutor.link %>" class="text-dark"> <%= tutor.full_name %> </a></h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div>
+                                                        <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-primary mr-2"></i> <%= tutor.city.name %> </p>
+                                                    </div>
+                                                </div>
+                                                
+                       
+                                            </div>
+                                        </div>
+                                        <div class="p-3 bg-light">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div>
+                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> <%= tutor.work_experience %></p>
+                                                    </div>
+                                                </div>
+                                                 <div class="col-md-6">
+                                                    <div>
+                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Subjects Taught :</span> <%= tutor.tutor_subjects %> </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div>
+                                                        <a href="<%= tutor.link %>" class="text-primary">View Profile <i class="mdi mdi-chevron-double-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+
+<% }); %>
+
+</script>
+
+ {% include 'index/index_content.html' %}
+
+  {% endblock %}

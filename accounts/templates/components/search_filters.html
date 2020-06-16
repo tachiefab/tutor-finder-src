@@ -1,0 +1,68 @@
+   {% load crispy_forms_tags %}
+
+
+   <div class="left-sidebar">
+                        <div class="accordion" id="accordionExample">
+
+                            <form method="GET" action="{% url 'tutor-list' %}">
+    <div class="card rounded mt-4">
+                                <a data-toggle="collapse" href="#collapsefour" class="job-list" aria-expanded="true" aria-controls="collapsefour">
+                                    <div class="card-header" id="headingfour">
+                                        <h6 class="mb-0 text-dark">Experince</h6>
+                                    </div>
+                                </a>
+                                <div id="collapsefour" class="collapse show" aria-labelledby="headingfour">
+                                    <div class="card-body p-0">
+
+                                        <div class="custom-control custom-radio">
+                                            {{ filter_form.work_experience|as_crispy_field }}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- collapse one end -->
+
+                            <div class="card rounded mt-4">
+                                <a data-toggle="collapse" href="#collapsefive" class="job-list" aria-expanded="true" aria-controls="collapsefive">
+                                    <div class="card-header" id="headingfive">
+                                        <h6 class="mb-0 text-dark">Gender</h6>
+                                    </div>
+                                </a>
+                                <div id="collapsefive" class="collapse show" aria-labelledby="headingfive">
+                                    <div class="card-body p-0">
+
+                                        <div class="custom-control custom-radio">
+                                            {{ filter_form.sex|as_crispy_field }}
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- collapse one end -->
+
+                            <div class="card rounded mt-4">
+                                <a data-toggle="collapse" href="#collapsesevan" class="job-list collapsed" aria-expanded="true" aria-controls="collapsesevan">
+                                    <div class="card-header border-bottom-0" id="headingsevan">
+                                        <h6 class="mb-0 text-dark">Qualification</h6>
+                                    </div>
+                                </a>
+                                <div id="collapsesevan" class="collapse show" aria-labelledby="headingsevan">
+                                    <div class="card-body p-0">
+
+                                        <div class="custom-control custom-checkbox">
+                                            {{ filter_form.qualification|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    <input type='hidden' name='q' value='{{ request.GET.q }}' />
+    <input type='submit' value='Apply Filter' class='btn btn-default'>
+
+</form>
+<a href="{% url 'tutor-list' %}">Clear Filters</a>
+                            
+
+                        </div>
+                    </div>
+

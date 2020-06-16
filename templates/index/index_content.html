@@ -1,0 +1,184 @@
+{% load static %}
+
+    <section class="bg-home" style="background: url('{% static 'images/bck-1.jpg' %}');background-size: cover;" >
+        <div class="bg-overlay"></div>
+        <div class="home-center">
+            <div class="home-desc-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12">
+                            <div class="title-heading text-center text-white">
+                                <h6 class="small-title text-uppercase text-light mb-3">Search and find the perfect tutor Now.</h6>
+                                <h1 class="heading font-weight-bold mb-4">The Easiest Way to Find your Private Tutor</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end home -->
+
+    <!-- popular category start -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title text-center mb-4 pb-2">
+                        <h4 class="title title-line pb-5">Popular Subjects</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+            {% for subject in popular_subjects %}
+                <div class="col-lg-3 col-md-6 mt-4 pt-2">
+                    <a href="javascript:void(0)">
+                        <div class="popu-category-box bg-light rounded text-center p-4">
+                            <div class="popu-category-icon mb-3">
+                                <i class="mdi mdi-book d-inline-block rounded-pill h3 text-primary"></i>
+                            </div>
+                            <div class="popu-category-content">
+                                <h5 class="mb-2 text-dark title">{{ subject.name }}</h5>
+                                <p class="text-success mb-0 rounded">{{ subject.count }} Teachers</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-12 text-center mt-4 pt-2">
+                    <a href="{% url 'tutor-list' %}" class="btn btn-primary-outline">See All Teachers <i class="mdi mdi-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- popular category end -->
+
+    <!-- all jobs start -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title text-center mb-4 pb-2">
+                        <h4 class="title title-line pb-5">Top Rated Teachers</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="tab-content mt-2" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="recent-job" role="tabpanel" aria-labelledby="recent-job-tab">
+                            <div class="row">
+                                <div class="col-lg-12 tutors">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+
+            <!-- end row -->
+            
+        </div>
+        <!-- end containar -->
+    </section>
+    <!-- all jobs end -->
+
+    <!-- How it Work start -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title text-center mb-4 pb-2">
+                        <h4 class="title title-line pb-5">How It Works</h4>
+                        <p class="text-muted para-desc mx-auto mb-1">Find your perfect private teacher.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mt-4 pt-2">
+                    <div class="how-it-work-box bg-light p-4 text-center rounded shadow">
+                        <div class="how-it-work-img position-relative rounded-pill mb-3">
+                            <img src="{% static 'images/how-it-work/img-1.png' %}" alt="" class="mx-auto d-block" height="50">
+                        </div>
+                        <div>
+                            <h5>Teachers register for a profile</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4 pt-2">
+                    <div class="how-it-work-box bg-light p-4 text-center rounded shadow">
+                        <div class="how-it-work-img position-relative rounded-pill mb-3">
+                            <img src="{% static 'images/how-it-work/img-2.png' %}" alt="" class="mx-auto d-block" height="50">
+                        </div>
+                        <div>
+                            <h5>Approved Teachers get listed</h5>
+                           </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4 pt-2">
+                    <div class="how-it-work-box bg-light p-4 text-center rounded shadow">
+                        <div class="how-it-work-img position-relative rounded-pill mb-3">
+                            <img src="{% static 'images/how-it-work/img-3.png' %}" alt="" class="mx-auto d-block" height="50">
+                        </div>
+                        <div>
+                            <h5>Users can search and find their perfect teacher</h5>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- How it Work end -->
+
+
+    <!-- testimonial start -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title text-center mb-4 pb-2">
+                        <h4 class="title title-line pb-5">Our Success Stories</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-4">
+                <div class="col-lg-12">
+                    <div id="owl-testi" class="owl-carousel owl-theme">
+
+                    {% for testimony in testimonies %}
+                        <div class="item testi-box rounded p-4 mr-3 ml-2 mb-4 bg-light position-relative">
+                            <p class="text-muted mb-5">{{ testimony.testimony }}</p>
+                            <div class="clearfix">
+                                <div class="testi-img float-left mr-3">
+                                    <img src="{{ testimony.user.profile_image.url }}" height="64" alt="" class="rounded-circle shadow">
+                                </div>
+                                <h5 class="f-18 pt-1">{{ testimony.user.get_full_name }}</h5>
+                                <div class="testi-icon">
+                                    <i class="mdi mdi-format-quote-open display-2"></i>
+                                </div>
+                            </div>
+                        </div>
+                            {% empty %}
+
+                    {% endfor %}
+
+                    
+
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- testimonial end -->

@@ -1,0 +1,81 @@
+{% load static %}
+{% load crispy_forms_tags %} 
+
+    <!-- Start home -->
+    <section class="bg-half page-next-level"> 
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="candidates-profile-details text-center">
+                         {% if tutor.get_image_url %}
+                        <img src="{{ tutor.profile_image.url  }}" height="150" alt="" class="d-block mx-auto shadow rounded-pill mb-4">
+                        {% endif %}
+                        <h5 class="text-white mb-2">{{ tutor.get_full_name }}</h5>
+                        <p class="text-white-50 h6 mb-2"><i class="mdi mdi-location mr-2"></i>{{ tutor.city }}</p>
+						<ul class="list-inline mb-3">
+                            <li class="list-inline-item text-white"><a href="#"><i class="mdi mdi-mailbox"></i></a>{{ tutor.email }}</li>
+                            <li class="list-inline-item text-white"><a href="#"><i class="mdi mdi-phone"></i></a> {{ tutor.phone }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end home -->
+
+    <!-- CANDIDATES PROFILE START -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mt-4 pt-2">
+                    <h4 class="text-dark">Education :</h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 mt-4 pt-5">
+                    <div class="border rounded candidates-profile-education text-center text-muted">
+                        <div class="profile-education-icon border rounded-pill bg-white text-primary">
+                            <i class="mdi mdi-36px mdi-school"></i>
+                        </div>
+                        <h6 class="text-uppercase f-17"><a href="#" class="text-muted">{{ tutor.school }}</a></h6>
+                        <p class="f-14 mb-1">{{ tutor.year_completed }}</p>
+                        <p class="pb-3 mb-0">{{ tutor.qualification }}</p>
+                        
+                        <p class="pt-3 border-top mb-0">{{ tutor.education_additional_information }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 mt-4 pt-2">
+                    <h4 class="text-dark">Experience :</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3 mt-md-0 pt-3">
+                    <div class="border rounded job-list-box p-4">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="job-list-desc candidates-profile-exp-desc">
+                                    <h5 class="f-19 mb-2"><a href="#" class="text-dark">{{ tutor.company }}</a></h5>
+                                    <p class="text-muted mb-0 f-16">{{ tutor.job_position }}</p>
+                                    <p class="text-muted mb-0 f-16">{{ tutor.start_date }} - {{ tutor.end_date }}</p>
+                                    <p class="text-muted mb-0 f-16">Salary : Ghc{{ tutor.salary }}</p>
+                                    <p class="text-muted mb-0 f-16"><i class="mdi mdi-bank mr-2"></i>{{ tutor.website }}</p>
+                                    <p class="text-muted mb-2 f-16"><i class="mdi mdi-map-marker mr-2"></i>{{ tutor.location }}</p>
+                                     {% if tutor.get_resume_url %}
+									<a href="{{ tutor.get_resume_url }}" class="btn btn-rounded btn-primary"><i class="mdi mdi-book"></i> View Resume</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+    </section>
+    <!-- CANDIDATES PROFILE END -->
