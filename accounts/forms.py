@@ -58,23 +58,29 @@ class ContactForm(forms.Form):
 
 class UserProfileForm(forms.ModelForm):
 
-    first_name = forms.CharField(label='', required=False, widget=forms.TextInput(
-             attrs={'class': 'form-control resume',
-             'placeholder': 'First Name'
-             }
-         ))
+    first_name = forms.CharField(
+                                    label='', 
+                                    required=True, 
+                                    widget=forms.TextInput(
+                                    attrs={'class':'form-control' , 
+                                    'autocomplete': 'off','pattern':'[A-Za-z ]+', 
+                                    'title':'Enter Characters Only '}))
 
-    middle_name = forms.CharField(label='', required=False, widget=forms.TextInput(
-             attrs={'class': 'form-control resume',
-             'placeholder': 'Middle Name'
-             }
-         ))
+    middle_name = forms.CharField(
+                                    label='', 
+                                    required=True, 
+                                    widget=forms.TextInput(
+                                    attrs={'class':'form-control' , 
+                                    'autocomplete': 'off','pattern':'[A-Za-z ]+', 
+                                    'title':'Enter Characters Only '}))
 
-    last_name = forms.CharField(label='', required=False, widget=forms.TextInput(
-             attrs={'class': 'form-control resume',
-             'placeholder': 'Last Name'
-             }
-         ))
+    last_name = forms.CharField(
+                                    label='', 
+                                    required=True, 
+                                    widget=forms.TextInput(
+                                    attrs={'class':'form-control' , 
+                                    'autocomplete': 'off','pattern':'[A-Za-z ]+', 
+                                    'title':'Enter Characters Only '}))
 
     phone = forms.CharField(label='', required=False, widget=forms.TextInput(
              attrs={'class': 'form-control resume',
