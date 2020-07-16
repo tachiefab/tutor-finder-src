@@ -24,7 +24,6 @@ class TutorSerializer(serializers.ModelSerializer):
     work_experience = serializers.SerializerMethodField()
     city = LocationSerializer(read_only=True)
     tutor_subjects = SerializerMethodField()
-    # subjects = SubjectSerializer(read_only=True, many=True)
     view_count = SerializerMethodField()
 
     class Meta:

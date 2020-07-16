@@ -14,7 +14,7 @@
             </div> 
             {% if request.user.is_authenticated %}                
             <div class="buy-button">
-                <a href="{{ tutor.get_absolute_url }}{{ tutor.id}}/update/" class="btn btn-primary"><i class="mdi mdi-cloud-upload"></i> Register As Tutor</a>
+                <a href="{{ tutor.get_absolute_url }}{{ tutor.id}}/update/" class="btn btn-primary"><i class="mdi mdi-cloud-upload"></i> {% if tutor.is_tutor %}Edit your Account {% else %} Register As Tutor {% endif %}</a>
             </div><!--end login button-->
             <!-- End Logo container-->
             <div class="buy-button">

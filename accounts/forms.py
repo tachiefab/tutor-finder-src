@@ -89,7 +89,7 @@ class UserProfileForm(forms.ModelForm):
          ))
 
     email = forms.CharField(label='', required=False, widget=forms.EmailInput(
-             attrs={'class': 'form-control resume',
+             attrs={'readonly':'readonly', 'class': 'form-control resume',
              'placeholder': 'Email ID'
              }
          ))
@@ -160,12 +160,13 @@ class UserProfileForm(forms.ModelForm):
                         'rows': 5}
                 ))
 
-
-    refree_1 = forms.CharField(label='', required=False, widget=forms.TextInput(
-             attrs={'class': 'form-control resume',
-             'placeholder': ''
-             }
-         ))
+    refree_1 = forms.CharField(
+                                    label='', 
+                                    required=True, 
+                                    widget=forms.TextInput(
+                                    attrs={'class':'form-control' , 
+                                    'autocomplete': 'off','pattern':'[A-Za-z ]+', 
+                                    'title':'Enter Characters Only '}))
 
 
     refree_1_phone = forms.CharField(label='', required=False, widget=forms.TextInput(
@@ -174,11 +175,14 @@ class UserProfileForm(forms.ModelForm):
              }
          ))
 
-    refree_2 = forms.CharField(label='', required=False, widget=forms.TextInput(
-             attrs={'class': 'form-control resume',
-             'placeholder': ''
-             }
-         ))
+
+    refree_2 = forms.CharField(
+                                    label='', 
+                                    required=True, 
+                                    widget=forms.TextInput(
+                                    attrs={'class':'form-control' , 
+                                    'autocomplete': 'off','pattern':'[A-Za-z ]+', 
+                                    'title':'Enter Characters Only '}))
 
     refree_2_phone = forms.CharField(label='', required=False, widget=forms.TextInput(
              attrs={'class': 'form-control resume',
