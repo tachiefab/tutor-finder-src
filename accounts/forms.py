@@ -68,7 +68,7 @@ class UserProfileForm(forms.ModelForm):
 
     middle_name = forms.CharField(
                                     label='', 
-                                    required=True, 
+                                    required=False, 
                                     widget=forms.TextInput(
                                     attrs={'class':'form-control' , 
                                     'autocomplete': 'off','pattern':'[A-Za-z ]+', 
@@ -82,13 +82,13 @@ class UserProfileForm(forms.ModelForm):
                                     'autocomplete': 'off','pattern':'[A-Za-z ]+', 
                                     'title':'Enter Characters Only '}))
 
-    phone = forms.CharField(label='', required=False, widget=forms.TextInput(
+    phone = forms.CharField(label='', required=True, widget=forms.TextInput(
              attrs={'class': 'form-control resume',
              'placeholder': 'Enter International phone format: +233 543334974'
              }
          ))
 
-    email = forms.CharField(label='', required=False, widget=forms.EmailInput(
+    email = forms.CharField(label='', required=True, widget=forms.EmailInput(
              attrs={'readonly':'readonly', 'class': 'form-control resume',
              'placeholder': 'Email ID'
              }
@@ -96,19 +96,20 @@ class UserProfileForm(forms.ModelForm):
 
     address = forms.CharField(
                 label='',
+                required=True, 
                 widget=forms.Textarea(
                         attrs={'class': 'form-control resume',
                         'placeholder': 'Enter your address here.',
                         'rows': 5}
                 ))
 
-    school = forms.CharField(label='', required=False, widget=forms.TextInput(
+    school = forms.CharField(label='', required=True, widget=forms.TextInput(
              attrs={'class': 'form-control resume',
              'placeholder': 'Sunyani Technical University.'
              }
          ))
 
-    year_completed = forms.CharField(label='', required=False, widget=forms.TextInput(
+    year_completed = forms.CharField(label='', required=True, widget=forms.TextInput(
              attrs={'class': 'form-control resume',
              'placeholder': '2020'
              }
@@ -116,19 +117,20 @@ class UserProfileForm(forms.ModelForm):
 
     education_additional_information = forms.CharField(
                 label='',
+                required=True, 
                 widget=forms.Textarea(
                         attrs={'class': 'form-control resume',
                         'placeholder': 'Additional Education Information.',
                         'rows': 5}
                 ))
 
-    company = forms.CharField(label='', required=False, widget=forms.TextInput(
+    company = forms.CharField(label='', required=True, widget=forms.TextInput(
              attrs={'class': 'form-control resume',
              'placeholder': 'Company Name'
              }
          ))
 
-    job_position = forms.CharField(label='', required=False, widget=forms.TextInput(
+    job_position = forms.CharField(label='', required=True, widget=forms.TextInput(
              attrs={'class': 'form-control resume',
              'placeholder': 'Job Position'
              }
@@ -140,20 +142,9 @@ class UserProfileForm(forms.ModelForm):
              }
          ))
 
-    start_date = forms.CharField(label='', required=False, widget=forms.TextInput(
-             attrs={'class': 'form-control resume',
-             'placeholder': '2020-03-27'
-             }
-         ))
-
-    end_date = forms.CharField(label='', required=False, widget=forms.TextInput(
-             attrs={'class': 'form-control resume',
-             'placeholder': '2020-03-27'
-             }
-         ))
-
     work_additional_information = forms.CharField(
                 label='',
+                required=True, 
                 widget=forms.Textarea(
                         attrs={'class': 'form-control resume',
                         'placeholder': 'Additional Work Information.',
@@ -169,7 +160,7 @@ class UserProfileForm(forms.ModelForm):
                                     'title':'Enter Characters Only '}))
 
 
-    refree_1_phone = forms.CharField(label='', required=False, widget=forms.TextInput(
+    refree_1_phone = forms.CharField(label='', required=True, widget=forms.TextInput(
              attrs={'class': 'form-control resume',
              'placeholder': ' +233 543334974'
              }
@@ -184,13 +175,13 @@ class UserProfileForm(forms.ModelForm):
                                     'autocomplete': 'off','pattern':'[A-Za-z ]+', 
                                     'title':'Enter Characters Only '}))
 
-    refree_2_phone = forms.CharField(label='', required=False, widget=forms.TextInput(
+    refree_2_phone = forms.CharField(label='', required=True, widget=forms.TextInput(
              attrs={'class': 'form-control resume',
              'placeholder': ' +233 543334974'
              }
          ))
 
-    subjects = forms.CharField(label='', required=False, widget=forms.TextInput(
+    subjects = forms.CharField(label='', required=True, widget=forms.TextInput(
              attrs={'class': 'form-control resume',
              'placeholder': 'Please seperate with a comma if more than one subject'
              }
@@ -201,6 +192,10 @@ class UserProfileForm(forms.ModelForm):
              'placeholder': ' www.codewithtm.com'
              }
          ))
+
+    resume = forms.FileField(required=True)
+    profile_image = forms.ImageField(required=True)
+    certificate = forms.FileField(required=True)
 
     
     class Meta:
@@ -228,8 +223,6 @@ class UserProfileForm(forms.ModelForm):
             'salary',
             'website',
             'location',
-            'start_date',
-            'end_date',
             'resume',
             'work_additional_information',
             'refree_1',

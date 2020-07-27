@@ -1,5 +1,7 @@
 from django.core.exceptions import ImproperlyConfigured
+from django.conf import settings
 from django.shortcuts import get_object_or_404, redirect, render
+from django.core.mail import send_mail
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -29,6 +31,15 @@ class UserSignUpView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
+        form_email = form.cleaned_data.get("email")
+        from_email = settings.EMAIL_HOST_USER
+        message_content = send_mail(
+        subject = 'Account activation',
+        message = 'Hi there, you have succesfully created your account, please activate your email next. at http://127.0.0.1:8000/accounts/activate/',
+        from_email = from_email,
+        recipient_list = [form_email,],
+        fail_silently=False,
+         ) 
         return redirect('login')
 
 

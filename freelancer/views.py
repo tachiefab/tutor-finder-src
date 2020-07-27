@@ -58,22 +58,20 @@ def ContactUsView(request):
 		form_email = form.cleaned_data.get("email")
 		form_message = form.cleaned_data.get("message")
 		form_full_name = form.cleaned_data.get("full_name")
-		subject = form.cleaned_data.get("full_name")
+		subject = form.cleaned_data.get("subject")
 		from_email = settings.EMAIL_HOST_USER
-		to_email = [from_email, 'tachiefab333@gmail.com', 'tachiefab311@gmail.com']
+		to_email = [form_email,]
 		contact_message = "%s: %s via %s"%( 
 				form_full_name, 
-				form_message, 
+				subject, 
 				form_email)
-		some_html_message = """
-		<h1>hello</h1>
-		"""
+		some_html_message = form_message
 		send_mail(subject, 
 				contact_message, 
 				from_email, 
 				to_email, 
 				html_message=some_html_message,
-				fail_silently=True)
+				fail_silently=False)
 
 	if request.user.is_authenticated:
 			user = request.user
